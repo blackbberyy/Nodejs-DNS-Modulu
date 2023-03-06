@@ -1,0 +1,57 @@
+DNS MODÜLÜ
+"Domain Name System" olan DNS alan adlarını makine dilinin anlayacağı IP adreslerine çevirir, böylece tarayıcılar internet kaynaklarına erişebilir. 
+
+Node.js DNS modülü, DNS sorguları yapmak için kullanılan bir Node.js modülüdür. Bu modül, DNS sorgularını yapmak için kullanabileceğiniz bir dizi fonksiyon içerir.
+
+DNS modülünün en sık kullanılan fonksiyonları şunlardır:
+
+dns.lookup(): Belirtilen bir URL'nin IP adresini çözümlemek için kullanılır.
+
+dns.resolve(): Belirtilen bir URL'nin IP adreslerini ve diğer kayıtları çözmek için kullanılır.
+
+dns.reverse(): Belirtilen bir IP adresinin DNS adını çözmek için kullanılır.
+
+Aşağıda, basit bir örnek kullanımı verilmiştir:
+
+const dns = require('dns'); 
+
+dns.lookup('www.google.com', (err, address, family) => { console.log('address: %j family: IPv%s', address, family);
+
+ }); 
+
+dns.resolve('www.google.com', 'MX', (err, addresses) => { console.log('addresses: %j', addresses); }); 
+
+dns.reverse('8.8.8.8', (err, hostnames) => { console.log('reverse: %j', hostnames)
+
+
+
+family(IPv4 ve IPv6. family seçeneği, dns.lookup() ile hangisini istersek .)
+
+%j jsona 
+
+ mxalan adının e-posta sunucusunu çö
+
+dns modülü, resolve() ve reverse() gibi birkaç fonksiyon içerir. resolve() fonksiyonu, belirtilen bir alan adına karşılık gelen IPv4 veya IPv6 adreslerini döndürürken, reverse() fonksiyonu ise belirtilen bir IP adresine karşılık gelen alan adını döndürür.
+
+const dns = require('dns');
+
+dns.resolve('www.google.com', 'A', (err, addresses) => {
+
+  if (err) throw err;
+
+  console.log(`Adresler: ${JSON.stringify(addresses)}`);
+
+});   (A parametresi, dns.resolve() fonksiyonunun ikinci parametresidir ve bu parametre, hangi tür DNS kaydı istendiğini belirler.
+
+A kaydı, IPv4 adresini temsil eder. Diğer DNS kayıtları arasında AAAA (IPv6 adresi), MX (e-posta sunucusu), CNAME (kanonik ad), TXT (metin), SRV (hizmet), PTR (ters DNS) vb. bulunur.)
+
+const dns = require('dns');
+
+ dns.reverse('8.8.8.8', (err, hostnames) => { if (err) throw err;
+
+ console.log(`Alan adı: ${JSON.stringify(hostnames)}`); });
+
+
+dns.getServers() yöntemini kullanarak sistem tarafından yapılandırılmış DNS sunucu adreslerini elde eder ve bu adresleri konsola yazdırır.
+
+
